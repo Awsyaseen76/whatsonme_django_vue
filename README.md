@@ -77,13 +77,41 @@
 
 
 ### Create Auth application (service):
-- python manage.py startapp Auth
+- `python manage.py startapp Auth`
 - add the app name to: WhatsOnMe/settings.py -> INSTALLED_APPS
 - on the project's url.py:
     imoprt 'include'
     create a path for the app (service) that point to the app (Auth's urls.py)
     so each request comes to the auth_api/ pipe it to the urls for that service
 - on the app (service) create the urls.py file that contains the internal paths and:
-    . import path and the views file for the app (service)
-    create the urlpatterns containing the paths and pipe it for coreesponding view
+    import path and the views file for the app (service)
+    create the urlpatterns containing the paths and pipe it for corresponding view
 - 
+
+### Using Django REST framework:
+- using the serilizer to convert the return object from the model to JSON and vice versa when creating new record
+    `pip install djangorestframework` if not installed before as on the first step
+- add it to the settings -> INSTALLED_APPS:
+    `'rest_framework',`
+
+### Setting up CORS
+- `pip install django-cors-headers`
+- used to determine the whitelist that can be accessed
+- on the settings.py file:
+    . on the INSTALLED _APPS -> add 'corsheaders'
+    . on MIDDLEWARE add:
+        `'corsheaders.middleware.CorsMiddleware',`
+        `'django.middleware.common.CommonMiddleware',`
+    . then setup CORS after MIDDLEWARE:
+        `CORS_ORIGIN_ALLOW_ALL = False`
+        `CORS_ORIGIN_WHITELIST = (`
+            `'http://localhost:4200',`
+        `)`
+
+### Create the data model for Auth
+- on Auth -> models.py: create the Auth model
+- migrate the created model:
+    the 'Auth' below is the app(service) name without specific name it will migrate all applications
+    `python manage.py makemigrations Auth`
+    `python manage.py migrate Auth`
+- now the table 'Auth' has been created.
