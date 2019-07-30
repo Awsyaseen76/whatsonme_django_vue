@@ -115,3 +115,39 @@
     `python manage.py makemigrations Auth`
     `python manage.py migrate Auth`
 - now the table 'Auth' has been created.
+
+### Using the Serialization
+- It used to serialization to JSON and deserialization from JSON for the model instance that created and returned.
+- This AuthSerializer will inherit from rest_framework.serializers.ModelSerializer superclass.
+- ModelSerializer class automatically populates a set of default fields and default validators, we only need to specify the model class.
+
+### Create the views and urls files:
+- create the views.py for the Auth app including:
+    '''
+    GET     Auths/: get all Auths
+    GET     Auths/user_name: find Auth by user_name
+    POST    Auths/: save an auth
+    GET     Auths/id: get an auth by id
+    PUT     Auths/id: update a auth by id
+    DELETE  Auths/id: delete a auth by id
+    '''
+
+### using the admin page:
+- to show the model on the admin page:
+    - on admin.oy file import the model and:
+        `admin.site.register(Auth)`
+
+
+## the server running on http://127.0.0.1:8000
+
+
+
+
+
+
+
+
+
+
+
+## Vue side
