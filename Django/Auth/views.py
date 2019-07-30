@@ -62,7 +62,7 @@ def auth_details(request, id):
 @csrf_exempt
 def auth_by_username(request, user_name):
     auth = Auth.objects.filter(user_name=user_name)
-
+    print('the found auth: ', auth)
     if request.method == 'GET':
         auth_serializer = AuthSerializer(auth, many=True)
         return JsonResponse(auth_serializer.data, safe=False)

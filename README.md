@@ -14,9 +14,9 @@
 - install django REST framework
     `pip install djangorestframework`
 
-## Create a project WhatsOnMe
+## Create a project WhatsOnME
 - create a project:
-    `django-admin startproject WhatsOnMe`
+    `django-admin startproject WhatsOnME`
 - run the server:
      `python manage.py runserver`
 - if error of sqlparse install it:
@@ -78,7 +78,7 @@
 
 ### Create Auth application (service):
 - `python manage.py startapp Auth`
-- add the app name to: WhatsOnMe/settings.py -> INSTALLED_APPS
+- add the app name to: WhatsOnME/settings.py -> INSTALLED_APPS
 - on the project's url.py:
     imoprt 'include'
     create a path for the app (service) that point to the app (Auth's urls.py)
@@ -151,3 +151,29 @@
 
 
 ## Vue side
+- `vue create auth`
+- `npm install axios`
+- `npm install vue-router`
+- create the file .jshintrc on the root to use the es6
+- run the app:
+    `npm run serve`
+    it works on http://localhost:8080
+- on src/main.js:
+    import router and use it
+- create the file http-common.js it will glue the vue with the django:
+    import axios
+    create axios and set the base url 'http://localhost:8000/auth_api'
+- on the file vue.config.js:
+    Set the port for 4200 that match the port on CORS settings in django in the CORS_ORIGIN_WHITELIST
+
+### Creating the components:
+
+1. auth_list
+2. auth_details
+3. add_auth
+4. search_auth
+
+### Create the router:
+
+## Now Vue has been connected to Django succussfully :)
+
